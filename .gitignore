@@ -1,0 +1,10 @@
+.clangd
+assets
+build
+bin
+docs
+src/ui_testing
+designdoc.txt
+todo.txt
+compile_commands.json
+

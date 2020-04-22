@@ -1,0 +1,13 @@
+add_executable(tests tests.cpp gameboard_tests.cpp gamestate_tests.cpp message_tests.cpp)
+find_package(Catch2)
+# add_library(gameboard_tests OBJECT gameboard_tests.cpp)
+# target_link_libraries(gameboard_tests Catch2::Catch2 gameboard)
+# add_library(gamestate_tests OBJECT gamestate_tests.cpp)
+# target_link_libraries(gamestate_tests Catch2::Catch2 gamestate)
+# add_library(message_tests OBJECT message_tests.cpp)
+# target_link_libraries(message_tests Catch2::Catch2 netmessage)
+# add_library(gameserver_tests OBJECT gameserver_tests.cpp)
+# target_link_libraries(gameserver_tests Catch2::Catch2 gameserver)
+# target_link_libraries(tests gameboard_tests gamestate_tests netmessage_tests gameserver_tests )
+target_link_libraries(tests Catch2::Catch2 die gameboard player gamestate servergamestate netmessage netserver netclient)
+
