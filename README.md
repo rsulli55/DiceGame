@@ -4,10 +4,10 @@ This is a working protoype of a networked Qwixx clone.  There is still much need
 to be done to make the game and network communication more robust, but it is 
 currently possible to successfully play the game with remote players.
 
-##Demo 
+### Clips
 ![](clips/demo1.gif)
 
-## Goals
+### Goals
 This project was started for these two main goals
 
 - Implement a networked version of the dice game Qwixx to play
