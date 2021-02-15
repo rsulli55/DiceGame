@@ -1,7 +1,7 @@
 # DiceGame
 
-This is a working protoype of a networked Qwixx clone.  There is still much needed
-to be done to make the game and network communication more robust, but it is 
+This is a working protoype of a networked Qwixx clone.  There is more needed to be done to make
+network communication more robust, but it is 
 currently possible to successfully play the game with remote players.
 
 ### Clips
