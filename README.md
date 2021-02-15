@@ -13,9 +13,9 @@ This project was started for these two main goals
 - Implement a networked version of the dice game Qwixx to play
 with friends and family during the coronavirus lockdown
 - Learn/practice modern software development tools and techniques e.g.
-  1. Use CMake for the build system to make cross platform (Linux, Windows, Mac) building smooth
-  2. Use conan for package/dependency management
-  3. Writing unit tests with Catch2
+  * Use CMake for the build system to make cross platform (Linux, Windows, Mac) building smooth
+  * Use conan for package/dependency management
+  * Writing unit tests with Catch2
 
 ### Current Network Architecture
 The game currently uses SFML for networking.  Messages are sent through the `SFML::Network::Packet` class
