@@ -31,8 +31,7 @@ authority on when the game should restart.
 
 ### Planned Improvements (currently on hold)
 - Move to `asio` networking library, add a lobby system, and handle disconecting more gracefully
-- Add the ability to resize the game window making sure graphics are scaled appropriately
-- Possibly move to SDL2 for graphics
+- Move to SDL2 for graphics, add options for window resolutions/rescaling
 
 
 
