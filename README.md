@@ -1,8 +1,8 @@
 # DiceGame
 
-This is a working protoype of a networked Qwixx clone.  There is more needed to be done to make
+This is a networked clone of the dice game [Qwixx](https://gamewright.com/product/Qwixx).  There is more needed to be done to make
 network communication more robust, but it is 
-currently possible to successfully play the game with remote players.
+currently possible to play the game with remote players.
 
 ### Clips
 ![](clips/demo1.gif)
@@ -10,7 +10,7 @@ currently possible to successfully play the game with remote players.
 ### Goals
 This project was started for these two main goals
 
-- Implement a networked version of the dice game Qwixx to play
+- Implement a networked version of Qwixx to play
 with friends and family during the coronavirus lockdown
 - Learn/practice modern software development tools and techniques e.g.
   * Use CMake for the build system to make cross platform (Linux, Windows, Mac) building smooth
@@ -29,7 +29,7 @@ Clients can submit there name and when the host sets "Ready", the game starts.
 At the end of the game there is an option to replay, and again the host is the 
 authority on when the game should restart.
 
-### Planned Improvements (currently on hold)
+### Future Improvements (on hold)
 - Move to `asio` networking library, add a lobby system, and handle disconecting more gracefully
 - Move to SDL2 for graphics, add options for window resolutions/rescaling
 
