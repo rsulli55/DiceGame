@@ -1,7 +1,5 @@
 #include "gameboard.h"
 
-/* TODO: Cleanup */
-
 namespace qdg {
 
     void Gameboard::reset() {
@@ -140,9 +138,6 @@ namespace qdg {
         return valid_move(position.color, position.number);
     }
 
-
-    /* For printing using fmt/spdlog */
-    /* template<typename OStream> */
     std::ostream& operator<<(std::ostream& out, const Gameboard::Color& color) {
         switch(color) {
             case Gameboard::Color::red:
@@ -164,7 +159,6 @@ namespace qdg {
         return out;
     }
 
-    /* template<typename OStream> */
     std::ostream& operator<<(std::ostream& out, const Gameboard::Number& number) {
         auto n = static_cast<int>(number);
         out << (n+2);
