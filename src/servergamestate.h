@@ -7,7 +7,7 @@ namespace qdg {
 
     /// Class that manages the server's gamestate
     ///   
-    /// Holds a vector Players (make a link) each of which has a Gameboard (make a link). 
+    /// Holds a vector of Players (make a link) each of which has a Gameboard (make a link). 
     /// The `map<sf::Uint8, bool>` `turn_done` stores which players have submitted the `end_turn` message.
     /// Also has a array of 6 die to represent the various dice from the game.
     /// Stores the id of the current leader/roller.
@@ -17,12 +17,9 @@ namespace qdg {
             /// the players map and sets `turn_done` to false for this `id`
             void add_player(sf::Uint8 id, const std::string& player_name);
             /// \notes Need to figure out how to handle if `id` is `leader_id`
-            /// currently IT WILL CRASH (I think)
+            /// currently it will probably crash 
             void remove_player(sf::Uint8 id);
             void init_leader() noexcept;
-        
-/* /1* TODO: Is this specialization of add_player() needed? *1/ */
-/*             sf::Uint8 add_player(const std::string& player_name); */
             /// \effects Sets each die to a new Die::Face by calling roll_one_die()
             void roll_dice() noexcept;
 /* TODO: Is get_face() needed? */
@@ -36,7 +33,6 @@ namespace qdg {
             /// resets the end_turn deque
             void new_round() noexcept;
             bool check_game_over() const noexcept;
-/* TODO: Is player() needed? */
 
         private:
             std::map<sf::Uint8, Player>::iterator leader;

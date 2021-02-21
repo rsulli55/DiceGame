@@ -10,7 +10,6 @@ namespace qdg {
     /// Manages the network communications from the client side
     class NetClient {
         public:
-            NetClient();
             bool connect_to_server();
             void set_non_blocking();
             NetMessage receive_message();
@@ -20,8 +19,6 @@ namespace qdg {
 
             void set_id(sf::Uint8 id);
             void set_host(bool h);
-            /* void handle_message(NetMessage& message); */
-            NetMessage process_message();
             /// \effects attempts to send the first message in `packet_queue`
             bool send_message();
             /// \effects adds `add_player` message using name to `packet_queue`  
@@ -60,9 +57,8 @@ namespace qdg {
             };
             bool all_die_received = false;
 
-            
-            /* const sf::IpAddress server_ip = sf::IpAddress(1186864313); */
-            sf::IpAddress server_ip = sf::IpAddress("192.168.0.249");
+            // some default values
+            sf::IpAddress server_ip = sf::IpAddress("127.0.0.1");
             unsigned short server_port = (unsigned short) 54'200;
     };
 }

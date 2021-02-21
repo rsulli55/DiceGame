@@ -1,21 +1,10 @@
 #include "servergamestate.h"
 
 namespace qdg { 
-    /* sf::Uint8 ServerGamestate::add_player(const std::string& player_name) { */
-    /*     auto id = sf::Uint8(players.size()); */
-    /*     players.emplace_back(id, player_name); */
-    /*     turn_done.emplace_back(false); */
-
-    /*     return id; */
-    /* } */
     void ServerGamestate::add_player(sf::Uint8 id, const std::string& player_name) {
         Gamestate::add_player(id, player_name);
         turn_done.insert({id, false});
     }
-
-/* TODO: Refactor the checking all turns ended into its own function */
-/*           and then check all turns are done when removing a player */
-/*           and return appropriately */
 
     void ServerGamestate::remove_player(sf::Uint8 id) {
 /* TODO: Figure out how to handle removing the leader */
@@ -62,14 +51,6 @@ namespace qdg {
         }
 
         turn_done[player_id] = true;
-        
-        /* auto done_checker = [](std::pair<sf::Uint8, bool> p) { return p.second; }; */
-        /* if (std::all_of(std::cbegin(turn_done), std::cend(turn_done), */ 
-        /*             done_checker)) { */
-        /*     spdlog::debug("Every player has ended their turn\n"); */
-        /*     new_round(); */
-        /*     return true; */
-        /* } */
 
         for (auto& [id, done] : turn_done) {
             if (!done)
@@ -81,7 +62,6 @@ namespace qdg {
     }
     
     void ServerGamestate::new_round()  noexcept {
-        /* Gamestate::next_round(); */
         //reset turn_done vector
         for (auto& [id, done] : turn_done) {
             done = false;

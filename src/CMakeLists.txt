@@ -1,12 +1,8 @@
 add_library(gameboard OBJECT gameboard.cpp)
 
-# include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 find_package(spdlog)
 find_package(sfml)
 target_link_libraries(gameboard spdlog::spdlog sfml::sfml)
-
-# add_library(player OBJECT player.cpp)
-# target_link_libraries(player gameboard)
 
 add_library(die OBJECT die.cpp)
 target_link_libraries(die spdlog::spdlog sfml::sfml)
@@ -30,4 +26,3 @@ target_link_libraries(netmessage gameboard die player)
 
 add_subdirectory(client)
 add_subdirectory(server)
-add_subdirectory(ui_testing)

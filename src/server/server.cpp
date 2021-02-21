@@ -10,7 +10,5 @@ int main() {
     while (server.any_connected())
         server.play_again(); 
 
-    
-
     return 0;
 }

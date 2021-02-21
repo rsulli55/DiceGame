@@ -5,8 +5,6 @@
 #include "../die.h"
 #include <SFML/Graphics.hpp>
 
-/* TODO: Maybe some member functions are not needed? */
-
 namespace qdg {
 
     class AnimatedDie : public Die {

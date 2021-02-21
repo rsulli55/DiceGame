@@ -29,8 +29,6 @@ namespace qdg {
 
     void NetServer::run_game() {
         selector_remove_listener();
-        /* listener.close(); */
-        /* bool got_message; */
 
         while (game_is_running) {
             //try to get message from clients
@@ -38,11 +36,6 @@ namespace qdg {
                 /* got_message = true; */
                 process_messages();
             }
-
-            /* if (got_message) { */
-            /*     check_game_over(); */
-            /*     got_message = false; */
-            /* } */
         }
 
         print_results();
@@ -296,16 +289,4 @@ namespace qdg {
         selector.remove(listener);
     }
 }
-
-      
-
-
-
-
-
-
-            
-
-            
-        
 

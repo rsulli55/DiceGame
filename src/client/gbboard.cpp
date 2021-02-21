@@ -43,10 +43,6 @@ namespace qdg {
 
     {}
 
-    /* void GbBoard::set_player(Player* p) { */
-    /*     player = p; */
-    /* } */
-
     void GbBoard::set_leader(bool l) {
         leader = l;
     }
@@ -67,26 +63,17 @@ namespace qdg {
     void GbBoard::check_hovering(const sf::Vector2f& mouse_pos) {
         for (auto& pos : viable_white_moves) {
             auto& box = get_box(pos);
-            if (box.check_hover(mouse_pos)) {
-            /* if (box.bounds().contains(mouse_pos) && (pos != white || pos != colored)) { */
-            /*     blank_hovering(); */
-            /*     set_hovering(pos); */
-            }
+            box.check_hover(mouse_pos);
+            
         }
 
         if (leader) {
             for (auto& pos : viable_colored_moves) {
                 auto& box = get_box(pos);
-                if (box.check_hover(mouse_pos)) {
-                /* if (box.bounds().contains(mouse_pos) && (pos != white || pos != colored)) { */
-                /*     blank_hovering(); */
-                /*     set_hovering(pos); */
-                }
+                box.check_hover(mouse_pos);
             }
 
         }
-
-        /* blank_hovering(); */
     }
 
     void GbBoard::check_clicked(const sf::Vector2f& mouse_pos) {
@@ -106,7 +93,6 @@ namespace qdg {
                     // if we are the leader then we need to not have taken white yet
                     else if (valid_move(pos) && (!leader || !taken_white)) {
                         //clear to prevent white being hovered over
-                        /* clear_hovering(); */
                         blank_white();
                         set_white(pos);
                         taken_white = true;
@@ -129,7 +115,6 @@ namespace qdg {
 
                     else if (valid_move(pos)) {
                         //clear to prevent white being hovered over
-                        /* clear_hovering(); */
                         blank_colored();
                         set_colored(pos);
                         taken_colored = true;
@@ -150,7 +135,6 @@ namespace qdg {
         if (leader) {
             spdlog::debug("GbBoard::end_turn() : colored is {}\n", colored);
             if (colored != no_position) {
-                    /* get_box(colored).state == Box::State::Filled) { */
                 //we should only set colored to something other than
                 //no position if it is filled
                 assert(get_box(colored).state == Box::State::Filled);
@@ -171,7 +155,6 @@ namespace qdg {
             //we should only set white to something other than
             //no position if it is filled
             assert(get_box(white).state == Box::State::Filled);
-                /* get_box(white).state == Box::State::Filled) { */
             spdlog::debug("It is filled, so marking it\n");
             result.first = white;
             auto c = static_cast<unsigned>(white.color);
@@ -267,7 +250,6 @@ namespace qdg {
         auto& number = position.number;
         auto c = static_cast<unsigned>(color);
         auto n = static_cast<unsigned>(number);
-
 
         //if we are at a locking number check the number of marks
         //in that row
@@ -534,32 +516,6 @@ namespace qdg {
         }
     }
 
-    /* void GbBoard::update() { */
-    /*     auto& board = player->gameboard; */
-
-    /*     for (auto& color : all_gameboard_colors) { */
-    /*         for (auto& number : all_gameboard_numbers) { */
-    /*             auto c = static_cast<unsigned>(color); */
-    /*             auto n = static_cast<unsigned>(number); */
-
-    /*             switch(color) { */
-    /*                 case Gameboard::Color::green: */
-    /*                 case Gameboard::Color::blue: */
-    /*                     n = 10 - n; */
-    /*                     break; */
-    /*                 default: */
-    /*                     break; */
-    /*             } */
-
-    /*             if (board.check_position({color, number})) */ 
-    /*                     rows[c][n].fill(); */
-    /*             else */ 
-    /*                 rows[c][n].blank(); */
-                
-    /*         } */
-    /*     } */
-    /* } */
-
     GbBox& GbBoard::get_box(Gameboard::Position position) {
         auto c = static_cast<unsigned>(position.color);
         auto n = static_cast<unsigned>(position.number);
@@ -652,7 +608,4 @@ namespace qdg {
         score -= penalty_count * 5;
         return (score > 0) ? score : 0;
     }
-
-
-
 }
