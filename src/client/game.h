@@ -77,9 +77,7 @@ namespace qdg {
 
 
         std::map<sf::Uint8, GbBoard> opp_boards;
-        /* std::map<sf::Uint8, board_positions> opp_positions; */
         std::map<sf::Uint8, sf::Text> opp_names;
-        /* std::map<sf::Uint8, sf::Vector2f> opp_names_positions; */
 
         NetClient gameclient;
         Gamestate state;

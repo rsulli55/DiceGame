@@ -38,7 +38,6 @@ namespace qdg {
         window.draw(transition_message);
         window.display();
         load_config();
-        /* connect_to_server(); */
     }
 
     void Game::load_config() {
@@ -139,8 +138,6 @@ namespace qdg {
         fmt::print("Connected!\n");
         gameclient.set_non_blocking();
     }
-
-
 
     void Game::prepare_screen() {
         std::string player_name;
@@ -353,7 +350,6 @@ namespace qdg {
             case NetMessage::Type::roll_dice: 
                 spdlog::debug("Received roll dice message\n");
                 dice_manager.roll_dice();
-                /* dice_rolling = true; */
                 break;
             case NetMessage::Type::set_die:  {
                 spdlog::debug("Received set die message {}\n", message);
@@ -367,7 +363,6 @@ namespace qdg {
                 //lock the color if necessary
                 if (opp_boards[message.player_id].mark_position(message.position)) {
                     colors_to_lock.push_back(message.position.color);
-                    /* dice_manager.lock_color(message.position.color); */
                 }
                 //after player moves grey out their name
                 opp_names[message.player_id].setFillColor(color_dark_grey);
@@ -380,8 +375,6 @@ namespace qdg {
                 break;
             case NetMessage::Type::new_round:
                 spdlog::debug("Received new round message {}\n", message);
-                // probably unecessary to set dice_rolling to false
-                /* state.set_leader(message.player_id); */
                 leader_id = message.player_id;
                 new_round();
                 break;
@@ -502,16 +495,6 @@ namespace qdg {
         auto [p1, p2] = player_board.end_turn();
         spdlog::debug("Pos1 {}, Pos2 {}\n", p1, p2);
 
-        /* if (player_board.locked_white()) { */
-        /*     spdlog::debug("Locked color {}\n", p1.color); */
-        /*     dice_manager.lock_color(p1.color); */
-        /* } */
-
-        /* if (player_board.locked_colored()) { */
-        /*     spdlog::debug("Locked color {}\n", p2.color); */
-        /*     dice_manager.lock_color(p2.color); */
-        /* } */
-
         bool marked_something = false;
 
         if (p1.number != Gameboard::Number::lock) {
@@ -593,9 +576,6 @@ namespace qdg {
 
     void Game::add_player(sf::Uint8 id, std::string name) {
 
-        /* if (id == player_id) */
-        /*     return; */
-
         //add opponent name
         opp_names.insert({id, sf::Text{name, font}});
 
@@ -623,9 +603,6 @@ namespace qdg {
         player_board.print_marks(); 
         button.set_label("Replay");
         button.blank();
-
-        /* view = window.getDefaultView(); */
-        /* window.setView(view); */
 
         std::string results_string;
         sf::Text results_text;

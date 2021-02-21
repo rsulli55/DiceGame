@@ -21,8 +21,6 @@ namespace qdg {
     class Gamestate {
         public:
         
-            /* /// \effects calls [reset_game()](standardese://*reset_game/) */
-            /* void start_game(); */
             /// \effects calls resets each players gameboard
             void reset_game();
             /// \effects makes a new Player with the name and adds it to 
@@ -32,8 +30,6 @@ namespace qdg {
             Player& get_player(sf::Uint8 player_id) noexcept;
             void set_leader(sf::Uint8 id);
             sf::Uint8 get_leader();
-            /* /// \effects Sets the game leader to the next player id */
-            /* void next_round() noexcept; */
             /// \effects Sets each die to a new Die::Face by calling roll_one_die()
             /// \effects calls Gameboard::mark_position for the Gameboard owned by player_id
             /// if Gameboard::mark_position returns true, we lock the Gameboard::Color associated

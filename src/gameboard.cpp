@@ -3,10 +3,6 @@
 /* TODO: Cleanup */
 
 namespace qdg {
-    
-    /* Gameboard::Gameboard() noexcept { */ 
-    /*     reset(); */
-    /* } */
 
     void Gameboard::reset() {
         for (gameboard_row& row: gameboard) 
@@ -180,12 +176,7 @@ namespace qdg {
         out << position.color << " " << position.number;
         return out;
     }
-    /* template<typename OStream> */
-    /* OStream& operator<<(OStream& out, const Gameboard::Position& position) { */
-    /*     out << position.color << " " << position.number; */
-    /*     return out; */
-    /* } */
-
+    
     sf::Packet& operator<<(sf::Packet& packet, const Gameboard::Color& color) {
         auto c = static_cast<int>(color);
         packet << c;
@@ -232,16 +223,6 @@ namespace qdg {
     bool operator!=(const Gameboard::Position& lhs, const Gameboard::Position& rhs) {
         return !(lhs == rhs);
     }
-
-
-
-
-
-
-
-
-
-
 
 }
 

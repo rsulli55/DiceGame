@@ -2,11 +2,6 @@
 
 namespace qdg{ 
 
-    /* void Gamestate::start_game() { */
-    /*     spdlog::debug("Starting game\n"); */
-    /*     reset_game(); */
-    /* } */
-
     void Gamestate::reset_game() {
         spdlog::debug("Resetting game\n");
 
@@ -16,8 +11,6 @@ namespace qdg{
         }
 
         std::fill(std::begin(locked_colors), std::end(locked_colors), false);
-
-        /* leader = players.begin(); */
     }
 
     void Gamestate::add_player(sf::Uint8 id, const std::string& player_name) {
@@ -25,12 +18,7 @@ namespace qdg{
     }
 
     void Gamestate::remove_player(sf::Uint8 id) {
-        //move to next player for leader
-        //actually don't worry about leader
-        /* leader++; */
         players.erase(id);
-        //reset leader iterator
-        /* leader = players.find(leader->first); */
     }
 
     Player& Gamestate::get_player(sf::Uint8 player_id) noexcept {
@@ -61,14 +49,6 @@ namespace qdg{
         locked_colors[c] = true;
     }
 
-    /* void Gamestate::next_round()  noexcept { */
-    /*     spdlog::debug("Starting next round\n"); */
-        
-    /*     leader++; */
-    /*     if (leader == players.end()) */
-    /*         leader = players.begin(); */
-    /* } */
-    
     void Gamestate::set_die(Die die) noexcept {
         auto c = static_cast<unsigned>(die.color);
 

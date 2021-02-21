@@ -4,6 +4,8 @@
 #include "../src/client/netclient.h"
 
 /* NOTE: This test assumes that the server is already runnning */
+/* For that reason, it is not automatically included with the `tests` target */
+
 TEST_CASE("Trial runs of game", "[gameserver]") {
     spdlog::set_level(spdlog::level::debug);
 

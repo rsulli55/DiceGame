@@ -6,10 +6,6 @@
 
 #include "game_constants.h"
 
-/* TODO: Cleanup unused code */
-
-
-
 namespace qdg {
     
     /// Class that manages a single gameboard
@@ -51,9 +47,6 @@ namespace qdg {
         friend sf::Packet& operator>>(sf::Packet& packet, Position& position);
         friend bool operator==(const Position& lhs, const Position& rhs);
         friend bool operator!=(const Position& lhs, const Position& rhs);
-
-
-
         
         private:
         bool mark_position(const Color& color, const Number& number) noexcept;
@@ -79,8 +72,6 @@ namespace qdg {
             Color::red, Color::yellow,
             Color::green, Color::blue
         };
-
-    
 
 /* TODO: Should count_row be removed? */
         int count_row(const gameboard_row& row) const;

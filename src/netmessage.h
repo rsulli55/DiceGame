@@ -7,10 +7,8 @@
 #include "gameboard.h"
 #include "die.h"
 
-/* QUESTION: Not sure if this is the best way to handle messaging
- * I am just putting every message type into one big class, but some
- * messages can only be sent before the game starts, others during 
- * the game, and others after the game finishes*/
+/* Currently all Messages are under this one class, maybe having multiple 
+ * classes would be better?*/
 
 namespace qdg {
 
@@ -46,8 +44,3 @@ namespace qdg {
     sf::Packet& operator<<(sf::Packet& packet, const NetMessage& message);
     sf::Packet& operator>>(sf::Packet& packet, NetMessage& message);
 }
-
-
-
-
-

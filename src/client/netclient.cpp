@@ -2,11 +2,6 @@
 
 namespace qdg {
 
-    NetClient::NetClient() {
-        //we want a non blocking socket
-        /* server.setBlocking(false); */
-    }
-
     void NetClient::set_non_blocking() {
         server.setBlocking(false);
     }
@@ -62,9 +57,9 @@ namespace qdg {
             return message;
         }
 
-        else if (status == sf::Socket::NotReady) {
-            /* spdlog::debug("No packet is ready\n"); */
-        }
+        /* else if (status == sf::Socket::NotReady) { */
+        /*     spdlog::debug("No packet is ready\n"); */
+        /* } */
         
         message.msg_type = NetMessage::Type::no_msg;
         
@@ -78,105 +73,6 @@ namespace qdg {
     void NetClient::set_host(bool h) {
         host = h;
     }
-
-    /* NetMessage NetClient::process_message() { */
-    /*     NetMessage message = receive_message(); */
-
-    /*     if (message.msg_type != NetMessage::Type::no_msg) { */
-    /*         handle_message(message); */
-    /*     } */
-
-    /*     return message; */
-    /* } */
-
-    /* void NetClient::handle_pregame_message() { */
-    /*     spdlog::debug("Checking for messages...\n"); */
-
-    /*     sf::Packet packet; */
-    /*     if (server.receive(packet) != sf::Socket::Done) { */
-    /*         spdlog::error("Did not fully recieve the packet\n"); */
-    /*         return; */
-    /*     } */
-
-    /*     NetMessage message; */
-    /*     packet >> message; */
-
-    /*     switch (message.msg_type) { */
-
-    /*         default: */ 
-    /*             spdlog::debug("Unexpected msg_type in handle_pregame_message()\n"); */
-    /*             break; */
-    /*     } */
-
-    /* } */
-
-    /*void NetClient::handle_message(NetMessage& message) {*/
-        
-    /*    switch (message.msg_type) {*/
-
-    /*        *Pregame Messages*/
-    /*        case NetMessage::Type::set_host:*/ 
-    /*            spdlog::debug("Received set host message\n");*/
-    /*            player_id = message.player_id;*/
-    /*            host = true;*/
-    /*            break;*/
-    /*        case NetMessage::Type::not_host:*/ 
-    /*            spdlog::debug("Received not host message\n");*/
-    /*            player_id = message.player_id;*/
-    /*            host = false;*/
-    /*            break;*/
-    /*        case NetMessage::Type::add_player:*/
-    /*            spdlog::debug("Adding player with id {} and name {}\n",*/
-    /*                    message.player_id, message.player_name);*/
-    /*            state.add_player(message.player_id, message.player_name);*/
-    /*            break;*/
-    /*        case NetMessage::Type::start_game:*/
-    /*            spdlog::debug("Received start game message\n");*/
-    /*            /// Managers network communications from the server sidedd*/
-    /*            game_running = true;*/
-    /*            break;*/
-    /*        *Game Message*/
-    /*        case NetMessage::Type::roll_dice:*/ 
-    /*            spdlog::debug("Received roll dice message\n");*/
-    /*            dice_rolling = true;*/
-    /*            break;*/
-    /*        case NetMessage::Type::set_die:  {*/
-    /*            spdlog::debug("Received set die message\n");*/
-    /*            auto& die = message.die;*/
-    /*            state.set_die(die);*/
-    /*            die_received(die.color);*/
-    /*            break;*/
-    /*        }*/
-    /*        case NetMessage::Type::mark_position:*/
-    /*            spdlog::debug("Received mark position message\n");*/
-    /*            state.mark_position(message.player_id, message.position);*/
-    /*            break;*/
-    /*        case NetMessage::Type::take_penalty:*/ 
-    /*            spdlog::debug("Received take penalty message\n");*/
-    /*            state.take_penalty(message.player_id);*/
-    /*            break;*/
-    /*        case NetMessage::Type::new_round:*/
-    /*            spdlog::debug("Received new round message\n");*/
-    /*            // probably unecessary to set dice_rolling to false*/
-    /*            state.set_leader(message.player_id);*/
-    /*            dice_rolling = false;*/
-    /*            all_die_received = false;*/
-    /*            std::fill(std::begin(received_die), std::end(received_die), false);*/
-    /*            break;*/
-    /*        case NetMessage::Type::game_over:*/ 
-    /*            spdlog::debug("Received game over message\n");*/
-    /*            game_running = false;*/
-    /*            break;*/
-    /*        case NetMessage::Type::disconnect:*/ 
-    /*            spdlog::debug("Received disconnect message\n");*/
-    /*            state.remove_player(message.player_id);*/
-    /*            break;*/
-    /*        default:*/ 
-    /*            spdlog::debug("Unexpected msg_type in handle_message()\n");*/
-    /*            break;*/
-    /*    }*/
-
-    /*}*/
 
     bool NetClient::send_message() {
         if (packet_queue.size() == 0)
@@ -301,17 +197,5 @@ namespace qdg {
     bool NetClient::is_host() const noexcept {
         return host;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

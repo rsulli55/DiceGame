@@ -3,7 +3,7 @@
 #include "../src/client/netclient.h"
 
 /* NOTE: This test assumes that the gameserver is already runnning */
-
+/* For that reason, it is not automatically included with the `tests` target */
 
 TEST_CASE("Test a run of the game", "[gameserver]") {
     sf::Time my_countdown = sf::seconds(1.f);
@@ -90,22 +90,6 @@ TEST_CASE("Test a run of the game", "[gameserver]") {
                 client->send_message();
             }
         }
-
-        /* for (auto& client : clients) { */
-        /*     client->disconnect(); */
-        /* } */
-
-        /* std::queue<unsigned> not_sent; */
-        /* for (int i = 0; i < num_clients; ++i) { */
-        /*     not_sent.push(i); */
-        /* } */
-
-        /* while (!not_sent.empty()) { */
-        /*     auto id = not_sent.front(); */
-        /*     if (clients[id]->send_message()) { */
-        /*         not_sent.pop(); */
-        /*     } */
-        /* } */
     }
 
     SECTION("Run of game where game after two colors are locked") {
@@ -145,83 +129,7 @@ TEST_CASE("Test a run of the game", "[gameserver]") {
             }
         }
 
-
     }
-
-
-
-    //the first client should recieve set_host message
-    //and the rest should recieve not_host
-    
-    /* if (clients[0].receive(packet) != sf::Socket::Done) { */
-    /*     spdlog::error("Client 0 did not fully receive packet\n"); */
-    /* } */
-    /* packet >> message; */
-    /* packet.clear(); */
-    /* REQUIRE(message.msg_type == qdg::NetMessage::Type::set_host); */
-
-    /* for (int i = 1; i < num_clients; ++i) { */
-        
-    /*     if (clients[i]->receive(packet) != sf::Socket::Done) { */
-    /*         spdlog::error("Client {} did not fully receive packet\n", i); */
-    /*     } */
-    /*     packet >> message; */
-    /*     packet.clear(); */
-    /*     REQUIRE(message.msg_type == qdg::NetMessage::Type::not_host); */
-    /* } */
-
-
-    /* //we should not end if someone other than host */
-    /* //send host_ready message */
-    /* message.msg_type = qdg::NetMessage::Type::host_ready; */
-    /* packet << message; */
-    /* if (clients[1]->send(packet) != sf::Socket::Done) { */
-    /*     spdlog::error("Client 1 did not fully send packet\n"); */
-    /* } */
-    /* packet.clear(); */
-
-
-
-    /* for (int i = 0; i < num_clients; ++i) { */
-    /*     auto& client = clients[i]; */
-    /*     auto name = fmt::format("Player {}", i); */ 
-
-    /*     message.msg_type = qdg::NetMessage::Type::add_player; */
-    /*     message.player_name = name; */
-    /*     packet << message; */
-    /*     if (client->send(packet) != sf::Socket::Done) { */
-    /*         spdlog::error("Client did not fully send packet\n"); */
-    /*     } */
-    /*     packet.clear(); */
-
-    /*     for (auto& c : clients) { */
-    /*         qdg::NetMessage rec_message; */
-    /*         c->receive(packet); */
-    /*         packet >> rec_message; */
-    /*         packet.clear(); */
-    /*         REQUIRE(rec_message.msg_type == message.msg_type); */
-    /*         REQUIRE(rec_message.player_name == name); */
-    /*     } */
-    /* } */
-
-    /* message.player_id = sf::Uint8(0); */
-    /* message.msg_type = qdg::NetMessage::Type::host_ready; */
-    /* packet << message; */
-    /* if (clients[0]->send(packet) != sf::Socket::Done) { */
-    /*     spdlog::error("Client did not fully send packet\n"); */
-    /* } */
-    /* packet.clear(); */
-
-
-    /* for (auto& client : clients) { */
-    /*     if (client->receive(packet) != sf::Socket::Done) { */
-    /*         spdlog::error("Client did not fully receive packet\n"); */
-    /*     } */
-    /*     packet >> message; */
-    /*     packet.clear(); */
-
-    /*     REQUIRE(message.msg_type == qdg::NetMessage::Type::start_game); */
-    /* } */
 
 }
 

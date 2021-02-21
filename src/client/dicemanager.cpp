@@ -106,13 +106,9 @@ namespace qdg {
             auto number2 = static_cast<Gameboard::Number>(f2 + color_f);
             if (render_state[static_cast<unsigned>(die_color)]) {
                 /* spdlog::debug("{} {}\n", die_color, get_die(die_color).face); */
-                //only add colored moves which are not already white moves
-                //nevermind that won't work
-                /* if (color_f != f2) */
-                    result.push_back({color, number1});
-                /* if (color_f != f1) */
-                    result.push_back({color, number2});
-                    spdlog::debug("Added postions {} {}\n", Gameboard::Position{color, number1}, Gameboard::Position{color, number2});
+                result.push_back({color, number1});
+                result.push_back({color, number2});
+                spdlog::debug("Added postions {} {}\n", Gameboard::Position{color, number1}, Gameboard::Position{color, number2});
             }
             
             else {
@@ -158,17 +154,6 @@ namespace qdg {
             assert(state == true);
         }
     }
-
-    /* void DiceManager::change_rolling(DieColor color) { */
-    /*     //this function is called when the dice dialog button is clicked */
-    /*     //if the dice is changed to not render, then we need to make rolling false */
-    /*     int c = static_cast<int>(color); */
-
-    /*     if (!render_state[c]) { */
-    /*         dice[c].set_rolling(false); */
-    /*     } */
-    /* } */
-
 
     void DiceManager::load_textures(const std::string& path_to_assets) {
         for (int i = 0; i < number_of_dice; ++i) {

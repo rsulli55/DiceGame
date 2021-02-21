@@ -36,7 +36,5 @@ namespace qdg {
         sf::Color fill_color;
         sf::Color hover_color;
 
-
-
     };
 }
