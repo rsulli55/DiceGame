@@ -15,7 +15,8 @@ with friends and family during the coronavirus lockdown
 - Learn/practice modern software development tools and techniques e.g.
   * Use CMake for the build system to make cross platform (Linux, Windows, Mac) building smooth
   * Use conan for package/dependency management
-  * Writing unit tests with Catch2
+  * Use Catch2 for testing 
+  * Use [standardese](https://github.com/standardese/standardese) for documentation (partially done)
 
 ### Current Network Architecture
 The game currently uses SFML for networking.  Messages are sent through the `SFML::Network::Packet` class
@@ -25,15 +26,10 @@ Initially the server
 sets up a TCPListener and adds clients, making the first client the host.  
 Clients can submit there name and when the host sets "Ready", the game starts.
 
-
 At the end of the game there is an option to replay, and again the host is the 
 authority on when the game should restart.
 
 ### Planned Improvements (currently on hold)
 - Move to `asio` networking library, add a lobby system, and handle disconecting more gracefully
 - Move to SDL2 for graphics, add options for window resolutions/rescaling
-
-
-
-
 
